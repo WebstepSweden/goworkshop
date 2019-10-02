@@ -32,10 +32,14 @@ import (
 //                  -+/+::::::::::::::::::/+//:`
 //                 //.-/+//+++///////+++//://-/+
 //                 ./:-     ``.----..``     `::`
-
-// *********************
-// *** Go or Golang? ***
-// *********************
+//
+//
+//   ____                                       _
+//  / ___|  ___     __ _   ___     __ _   ___  | |
+// | |  _  / _ \   / _` | / _ \   / _` | / _ \ | |
+// | |_| || (_) | | (_| || (_) | | (_| || (_) ||_|
+//  \____| \___/   \__, | \___/   \__, | \___/ (_)
+//                 |___/          |___/
 //
 // Welcome to the Go workshop. I'll try to take you through some of what I learned when
 // going through this strange language and see if I can make you interested as well.
@@ -53,7 +57,11 @@ import (
 // * https://twitter.com/search?q=%23golang
 // * https://www.reddit.com/r/golang/
 
-// *** Setting up the development environment ***
+//  ____
+// |  _ \   ___ __   __    ___  _ __ __   __
+// | | | | / _ \\ \ / /   / _ \| '_ \\ \ / /
+// | |_| ||  __/ \ V /   |  __/| | | |\ V /
+// |____/  \___|  \_/     \___||_| |_| \_/
 //
 // If you haven't already, install Go using the instructions found in https://golang.org/doc/install
 //
@@ -74,12 +82,18 @@ import (
 // * https://medium.com/rungo/working-in-go-workspace-3b0576e0534a
 // * https://www.callicoder.com/golang-installation-setup-gopath-workspace/
 
-// *****************
-// *** Exporting ***
-// *****************
+//  _____                            _    _
+// | ____|__  __ _ __    ___   _ __ | |_ (_) _ __    __ _
+// |  _|  \ \/ /| '_ \  / _ \ | '__|| __|| || '_ \  / _` |
+// | |___  >  < | |_) || (_) || |   | |_ | || | | || (_| |
+// |_____|/_/\_\| .__/  \___/ |_|    \__||_||_| |_| \__, |
+//              |_|                                 |___/
 //
-// Defining identifiers in Go (such as functions and fields), you can choose to export them or keep them local.
-// Exporting means they will be available to other packages for import. So writing things like strings.ToLower("HELLO")
+// Defining identifiers in Go (such as functions and fields), you can choose to export them
+// or keep them local.
+//
+// Exporting means they will be available to other packages for import. So writing things like:
+// strings.ToLower("HELLO")
 // means I'm using the exported function ToLower() from package strings.
 // And the secret to exporting stuff from your package is this:
 // .........they need to start with a capital letter.
@@ -98,9 +112,17 @@ func UseMeImExported() {}
 // * https://tour.golang.org/basics/3
 // * https://medium.com/golangspec/exported-identifiers-in-go-518e93cc98af
 
-// ************************
-// *** gofmt and golint ***
-// ************************
+//                 __             _      ___
+//   __ _   ___   / _| _ __ ___  | |_   ( _ )
+//  / _` | / _ \ | |_ | '_ ` _ \ | __|  / _ \/\
+// | (_| || (_) ||  _|| | | | | || |_  | (_>  <
+//  \__, | \___/ |_|  |_| |_| |_| \__|  \___/\/
+//  |___/         _  _         _
+//   __ _   ___  | |(_) _ __  | |_
+//  / _` | / _ \ | || || '_ \ | __|
+// | (_| || (_) || || || | | || |_
+//  \__, | \___/ |_||_||_| |_| \__|
+//  |___/
 //
 // Go is quite opinionated about the coding style and defines some rigid rules to control the looks of your code.
 // In order to keep things nice and clean, there are two tools you need to use, either using the terminal or
@@ -120,7 +142,12 @@ func UseMeImExported() {}
 // * https://blog.golang.org/go-fmt-your-code
 // * https://github.com/golang/lint
 
-// *** Variables ***
+// __     __            _         _      _
+// \ \   / /__ _  _ __ (_)  __ _ | |__  | |  ___  ___
+//  \ \ / // _` || '__|| | / _` || '_ \ | | / _ \/ __|
+//   \ V /| (_| || |   | || (_| || |_) || ||  __/\__ \
+//    \_/  \__,_||_|   |_| \__,_||_.__/ |_| \___||___/
+//
 // There are different ways to create a variable in Go. We usually use the first two forms.
 
 // CreateVariables shows how to create variables in different ways
@@ -146,9 +173,11 @@ func CreateVariables() {
 // * https://gobyexample.com/variables
 // * https://www.golang-book.com/books/intro/4
 
-// *****************
-// *** Functions ***
-// *****************
+//  _____                     _    _
+// |  ___|_   _  _ __    ___ | |_ (_)  ___   _ __   ___
+// | |_  | | | || '_ \  / __|| __|| | / _ \ | '_ \ / __|
+// |  _| | |_| || | | || (__ | |_ | || (_) || | | |\__ \
+// |_|    \__,_||_| |_| \___| \__||_| \___/ |_| |_||___/
 //
 // Functions have the following syntax:
 // func functionsName(arg1Name arg1Type, arg2Name arg2Type, ...etc,) returnType {
@@ -166,15 +195,24 @@ func returningFunc(arg1 string, arg2 int) float32 {
 	return 0
 }
 
+// or even like this:
+
+func returningTuple(s string) (int, int, int) {
+	return 1, 2, 3
+}
+
 // Function resources:
 // * https://tour.golang.org/basics/4
 // * https://www.callicoder.com/golang-functions/
 
-// *****************
-// *** For loops ***
-// *****************
+//  _____               _
+// |  ___|___   _ __   | |  ___    ___   _ __   ___
+// | |_  / _ \ | '__|  | | / _ \  / _ \ | '_ \ / __|
+// |  _|| (_) || |     | || (_) || (_) || |_) |\__ \
+// |_|   \___/ |_|     |_| \___/  \___/ | .__/ |___/
+//                                      |_|
 //
-// For loops are the only way you can loop through stuff in Go. There are different ways to use it though:
+// For loops are the only way you can loop through stuff in Go. There are different ways to use them though:
 
 // LoopNumbers loops through numbers 1 to 10 and prints all the numbers that are divisible by 3
 func LoopNumbers() {
@@ -215,9 +253,11 @@ func LoopRunes() {
 // * https://tour.golang.org/flowcontrol/1
 // * https://golangbot.com/loops/
 
-// *******************
-// *** Collections ***
-// *******************
+//   ____        _  _              _    _
+//  / ___| ___  | || |  ___   ___ | |_ (_)  ___   _ __   ___
+// | |    / _ \ | || | / _ \ / __|| __|| | / _ \ | '_ \ / __|
+// | |___| (_) || || ||  __/| (__ | |_ | || (_) || | | |\__ \
+//  \____|\___/ |_||_| \___| \___| \__||_| \___/ |_| |_||___/
 //
 // Let's take a look at two common collection: slices (flexible arrays) and maps.
 // You can create them using the := symbol or by using make:
@@ -256,26 +296,56 @@ func Maps() {
 	fmt.Printf("inchesToCm: %v\n", inchesToCm)
 }
 
-/*
-Structs
-*/
+//  ____   _                       _
+// / ___| | |_  _ __  _   _   ___ | |_  ___
+// \___ \ | __|| '__|| | | | / __|| __|/ __|
+//  ___) || |_ | |   | |_| || (__ | |_ \__ \
+// |____/  \__||_|    \__,_| \___| \__||___/
+//
 
-/*
-strings and fmt
-*/
+//       _          _                        ___       __             _
+//  ___ | |_  _ __ (_) _ __    __ _  ___    ( _ )     / _| _ __ ___  | |_
+// / __|| __|| '__|| || '_ \  / _` |/ __|   / _ \/\  | |_ | '_ ` _ \ | __|
+// \__ \| |_ | |   | || | | || (_| |\__ \  | (_>  <  |  _|| | | | | || |_
+// |___/ \__||_|   |_||_| |_| \__, ||___/   \___/\/  |_|  |_| |_| |_| \__|
+//                            |___/
 
-/*
-Pointers
-*/
+//  ____         _         _
+// |  _ \  ___  (_) _ __  | |_  ___  _ __  ___
+// | |_) |/ _ \ | || '_ \ | __|/ _ \| '__|/ __|
+// |  __/| (_) || || | | || |_|  __/| |   \__ \
+// |_|    \___/ |_||_| |_| \__|\___||_|   |___/
+//
 
-/*
-Errors
-*/
+//  _____
+// | ____| _ __  _ __  ___   _ __  ___
+// |  _|  | '__|| '__|/ _ \ | '__|/ __|
+// | |___ | |   | |  | (_) || |   \__ \
+// |_____||_|   |_|   \___/ |_|   |___/
+//
 
-/*
-Testing
-*/
+//  _____           _    _
+// |_   _|___  ___ | |_ (_) _ __    __ _
+//   | | / _ \/ __|| __|| || '_ \  / _` |
+//   | ||  __/\__ \| |_ | || | | || (_| |
+//   |_| \___||___/ \__||_||_| |_| \__, |
+//                                 |___/
 
-/*
-Things not in Go
-*/
+//  _____  _      _
+// |_   _|| |__  (_) _ __    __ _  ___    _   _   ___   _   _
+//   | |  | '_ \ | || '_ \  / _` |/ __|  | | | | / _ \ | | | |
+//   | |  | | | || || | | || (_| |\__ \  | |_| || (_) || |_| |
+//   |_|  |_| |_||_||_| |_| \__, ||___/   \__, | \___/  \__,_|
+//                          |___/         |___/
+//                        _  _       __  _             _    _
+// __      __ ___   _ __ ( )| |_    / _|(_) _ __    __| |  (_) _ __
+// \ \ /\ / // _ \ | '_ \|/ | __|  | |_ | || '_ \  / _` |  | || '_ \
+//  \ V  V /| (_) || | | |  | |_   |  _|| || | | || (_| |  | || | | |
+//   \_/\_/  \___/ |_| |_|   \__|  |_|  |_||_| |_| \__,_|  |_||_| |_|
+//
+//   ____
+//  / ___|  ___
+// | |  _  / _ \
+// | |_| || (_) |
+//  \____| \___/
+//
