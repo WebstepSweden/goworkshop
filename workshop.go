@@ -3,7 +3,10 @@ package goworkshop
 
 import (
 	"fmt"
+	"math/rand"
+	"os"
 	"strings"
+	"time"
 )
 
 //                          `..------..`
@@ -33,14 +36,14 @@ import (
 //                 //.-/+//+++///////+++//://-/+
 //                 ./:-     ``.----..``     `::`
 //
-//
-//   ____                                       _
-//  / ___|  ___     __ _   ___     __ _   ___  | |
-// | |  _  / _ \   / _` | / _ \   / _` | / _ \ | |
-// | |_| || (_) | | (_| || (_) | | (_| || (_) ||_|
-//  \____| \___/   \__, | \___/   \__, | \___/ (_)
+
+//    ____                                     _
+//  / ___| ___      __ _  ___      __ _  ___ | |
+// | |  _ / _ \    / _` |/ _ \    / _` |/ _ \| |
+// | |_| | (_) |  | (_| | (_) |  | (_| | (_) |_|
+//  \____|\___/    \__, |\___/    \__, |\___/(_)
 //                 |___/          |___/
-//
+
 // Welcome to the Go workshop. I'll try to take you through some of what I learned when
 // going through this strange language and see if I can make you interested as well.
 //
@@ -52,6 +55,7 @@ import (
 
 // Go resources:
 // * https://golang.org/
+// * https://godoc.org/
 // * https://play.golang.org/
 // * https://tour.golang.org/
 // * https://twitter.com/search?q=%23golang
@@ -62,7 +66,7 @@ import (
 // | | | | / _ \\ \ / /   / _ \| '_ \\ \ / /
 // | |_| ||  __/ \ V /   |  __/| | | |\ V /
 // |____/  \___|  \_/     \___||_| |_| \_/
-//
+
 // If you haven't already, install Go using the instructions found in https://golang.org/doc/install
 //
 // Your Go environment should look like this:
@@ -88,7 +92,7 @@ import (
 // | |___  >  < | |_) || (_) || |   | |_ | || | | || (_| |
 // |_____|/_/\_\| .__/  \___/ |_|    \__||_||_| |_| \__, |
 //              |_|                                 |___/
-//
+
 // Defining identifiers in Go (such as functions and fields), you can choose to export them
 // or keep them local.
 //
@@ -123,10 +127,10 @@ func UseMeImExported() {}
 // | (_| || (_) || || || | | || |_
 //  \__, | \___/ |_||_||_| |_| \__|
 //  |___/
-//
-// Go is quite opinionated about the coding style and defines some rigid rules to control the looks of your code.
-// In order to keep things nice and clean, there are two tools you need to use, either using the terminal or
-// integrating them in your IDE. These are:
+
+// Go is quite opinionated about the coding style and defines some rigid rules to control the looks of
+// your code. In order to keep things nice and clean, there are two tools you need to use, either using
+// the terminal or integrating them in your IDE. These are:
 // * gofmt - a tool that formats your code according to the Go formatting rules
 // * golint - a tool that lints your code and prints out style mistakes
 
@@ -147,7 +151,7 @@ func UseMeImExported() {}
 //  \ \ / // _` || '__|| | / _` || '_ \ | | / _ \/ __|
 //   \ V /| (_| || |   | || (_| || |_) || ||  __/\__ \
 //    \_/  \__,_||_|   |_| \__,_||_.__/ |_| \___||___/
-//
+
 // There are different ways to create a variable in Go. We usually use the first two forms.
 
 // CreateVariables shows how to create variables in different ways
@@ -178,9 +182,9 @@ func CreateVariables() {
 // | |_  | | | || '_ \  / __|| __|| | / _ \ | '_ \ / __|
 // |  _| | |_| || | | || (__ | |_ | || (_) || | | |\__ \
 // |_|    \__,_||_| |_| \___| \__||_| \___/ |_| |_||___/
-//
+
 // Functions have the following syntax:
-// func functionsName(arg1Name arg1Type, arg2Name arg2Type, ...etc,) returnType {
+// func functionName(arg1Name arg1Type, arg2Name arg2Type, ...etc) returnType {
 // 	   implementation
 // }
 //
@@ -258,7 +262,7 @@ func LoopRunes() {
 // | |    / _ \ | || | / _ \ / __|| __|| | / _ \ | '_ \ / __|
 // | |___| (_) || || ||  __/| (__ | |_ | || (_) || | | |\__ \
 //  \____|\___/ |_||_| \___| \___| \__||_| \___/ |_| |_||___/
-//
+
 // Let's take a look at two common collection: slices (flexible arrays) and maps.
 // You can create them using the := symbol or by using make:
 
@@ -296,12 +300,41 @@ func Maps() {
 	fmt.Printf("inchesToCm: %v\n", inchesToCm)
 }
 
+// Collections resources:
+// * http://www.golangbootcamp.com/book/collection_types
+// * https://www.golang-book.com/books/intro/6
+
 //  ____   _                       _
 // / ___| | |_  _ __  _   _   ___ | |_  ___
 // \___ \ | __|| '__|| | | | / __|| __|/ __|
 //  ___) || |_ | |   | |_| || (__ | |_ \__ \
 // |____/  \__||_|    \__,_| \___| \__||___/
-//
+
+// Structs are objects that group some fields together. Here's one struct:
+
+// URL represents a url with a protocol, a domain and a path
+type URL struct {
+	protocol string
+	domain   string
+	port     int
+}
+
+// They are used like this:
+
+// CreateStruct creates a URL struct and prints it
+func CreateStruct() {
+	url := URL{
+		protocol: "http",
+		domain:   "google.se",
+		port:     80,
+	}
+
+	fmt.Printf("URL struct: %+v\n", url)
+}
+
+// Structs resources:
+// * https://gobyexample.com/structs
+// * https://medium.com/rungo/structures-in-go-76377cc106a2
 
 //       _          _                        ___       __             _
 //  ___ | |_  _ __ (_) _ __    __ _  ___    ( _ )     / _| _ __ ___  | |_
@@ -309,6 +342,42 @@ func Maps() {
 // \__ \| |_ | |   | || | | || (_| |\__ \  | (_>  <  |  _|| | | | | || |_
 // |___/ \__||_|   |_||_| |_| \__, ||___/   \___/\/  |_|  |_| |_| |_| \__|
 //                            |___/
+
+// strings and fmt are two very useful packages that one uses quite often when dealing
+// with strings. Here are some example usages:
+
+// UseStrings shows some examples of using the strings package
+func UseStrings(word string) {
+	println(strings.ToLower(word))
+	println(strings.ToUpper(word))
+	println(strings.Contains(word, "am"))
+	println(strings.Index(word, "am"))
+	println(strings.Join([]string{word, word, word}, " & "))
+	println(strings.Repeat(word, 7))
+}
+
+// UseFmt shows some examples of using the fmt package
+func UseFmt() {
+	fmt.Print(1, 2, 3)
+	println()
+
+	fmt.Printf("Hello, %v", "world")
+	println()
+
+	var great string
+	rand.Seed(time.Now().UnixNano())
+	if rand.Intn(2) == 0 {
+		great = "legendary"
+	} else {
+		great = "awesome"
+	}
+	fmt.Fprintf(os.Stdout, "It's going to be %v", great)
+	println()
+}
+
+// strings and fmt resources:
+// * https://golang.org/pkg/strings/
+// * https://golang.org/pkg/fmt/
 
 //  ____         _         _
 // |  _ \  ___  (_) _ __  | |_  ___  _ __  ___

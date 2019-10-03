@@ -3,7 +3,7 @@ package goworkshop
 import "testing"
 
 func TestSumTo100(t *testing.T) {
-	want := 100 * 101 / 2
+	want := 100 * 101 / 2 // this is Gauss solution, in case you're wondering
 	got := SumTo100()
 	if got != want {
 		t.Fatalf(`Fail! Wanted '%d', got '%d'`, want, got)
