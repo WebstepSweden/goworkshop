@@ -327,9 +327,9 @@ type URL struct {
 // CreateStruct creates a URL struct and prints it
 func CreateStruct() {
 	url := URL{
-		protocol: "http",
-		domain:   "google.se",
-		port:     80,
+		"http",
+		"google.se",
+		80,
 	}
 
 	fmt.Printf("URL struct: %+v\n", url)
