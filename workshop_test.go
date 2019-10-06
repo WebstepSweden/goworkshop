@@ -34,3 +34,17 @@ func TestDivisionRunner(t *testing.T) {
 	DivisionRunner(2, 3)
 	DivisionRunner(5, 0)
 }
+
+func TestGetANumber_(t *testing.T) {
+	want := 8
+	got := GetANumber()
+	if got != want {
+		t.Fatalf(`Fail! Wanted '%v', got '%v'`, want, got)
+	}
+}
+
+func BenchmarkGetANumber_(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		GetANumber()
+	}
+}

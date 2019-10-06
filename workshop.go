@@ -5,8 +5,11 @@ import (
 	"errors"
 	"fmt"
 	"math"
+	"math/rand"
 	"os"
 	"strings"
+	"testing"
+	"time"
 )
 
 //                          `..------..`
@@ -442,3 +445,50 @@ func DivisionRunner(x float32, y float32) {
 //   | ||  __/\__ \| |_ | || | | || (_| |
 //   |_| \___||___/ \__||_||_| |_| \__, |
 //                                 |___/
+
+// There is no library like Junit in Go. Instead we're using the testing package and if/else.
+
+// GetANumber is the function we're testing. It returns a random number.
+func GetANumber() int {
+	rand.Seed(time.Now().UnixNano()) // use a different seeds every time
+	return rand.Intn(100)            // generate a random number under 100
+}
+
+// TestGetANumber tests the GetANumber function
+func TestGetANumber(t *testing.T) {
+	want := 8
+	got := GetANumber()
+	if got != want {
+		t.Fatalf(`Fail! Wanted '%v', got '%v'`, want, got)
+	}
+}
+
+// Usually, we also add a benchmark test
+
+// BenchmarkGetANumber tests function GetANumber's performance
+func BenchmarkGetANumber(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		GetANumber()
+	}
+}
+
+// The result might look like this:
+//
+// goos: darwin
+// goarch: amd64
+// pkg: exercism.io/github.com/webstep/goworkshop
+// BenchmarkGetANumber_-12    	  163783	      7264 ns/op
+// PASS
+//
+// This means that the GetANumber function ran 163783 times at an average speed of 7264 ns per loop.
+// (The -12 thingy means it was run on 12 processors)
+//
+// Creating tests, you must follow these instructions:
+// * Tests must be inside a file that ends with _test
+// * Test functions must begin with func TestXxx(t *testing.T) - the first letter after Test must be capital
+// * Benchmark functions must begin with func BenchmarkXxx(b *testing.B) - again, the first letter
+//   after Benchmark must be capital
+//
+// Testing resources:
+// * https://golang.org/pkg/testing/
+// * https://marcofranssen.nl/test-and-benchmark-your-code-in-go/
