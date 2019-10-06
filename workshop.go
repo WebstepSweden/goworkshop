@@ -2,11 +2,11 @@
 package goworkshop
 
 import (
+	"errors"
 	"fmt"
-	"math/rand"
+	"math"
 	"os"
 	"strings"
-	"time"
 )
 
 //                          `..------..`
@@ -215,7 +215,7 @@ func returningTuple(s string) (int, int, int) {
 // |  _|| (_) || |     | || (_) || (_) || |_) |\__ \
 // |_|   \___/ |_|     |_| \___/  \___/ | .__/ |___/
 //                                      |_|
-//
+
 // For loops are the only way you can loop through stuff in Go. There are different ways to use them though:
 
 // LoopNumbers loops through numbers 1 to 10 and prints all the numbers that are divisible by 3
@@ -361,17 +361,11 @@ func UseFmt() {
 	fmt.Print(1, 2, 3)
 	println()
 
-	fmt.Printf("Hello, %v", "world")
+	fmt.Printf("Pi: %v", math.Pi)
 	println()
 
-	var great string
-	rand.Seed(time.Now().UnixNano())
-	if rand.Intn(2) == 0 {
-		great = "legendary"
-	} else {
-		great = "awesome"
-	}
-	fmt.Fprintf(os.Stdout, "It's going to be %v", great)
+	waitForIt := "...wait for it..."
+	fmt.Fprintf(os.Stdout, "It's going to be legen %v dary", waitForIt)
 	println()
 }
 
@@ -384,14 +378,63 @@ func UseFmt() {
 // | |_) |/ _ \ | || '_ \ | __|/ _ \| '__|/ __|
 // |  __/| (_) || || | | || |_|  __/| |   \__ \
 // |_|    \___/ |_||_| |_| \__|\___||_|   |___/
+
+// Pointers are variables that contains a reference to other variables.
 //
+// To create a pointer, use the & symbol:
+// pointerToSomething := &something
+// => pointerToSomething will now contain the address of variable something
+//
+// To follow a pointer, use the * symbol:
+// *pointerToSomething = "hi"
+// => the data in variable something will now be overwritten
+
+// UsePointers shows how to use pointers
+func UsePointers() {
+	something := "Hello"
+	pointerToSomething := &something
+	*pointerToSomething += " world"
+
+	println(something)
+}
+
+// Pointer resources:
+// * https://tour.golang.org/moretypes/1
+// * https://medium.com/rungo/pointers-in-go-a789eafccd53
 
 //  _____
 // | ____| _ __  _ __  ___   _ __  ___
 // |  _|  | '__|| '__|/ _ \ | '__|/ __|
 // | |___ | |   | |  | (_) || |   \__ \
 // |_____||_|   |_|   \___/ |_|   |___/
-//
+
+// Sometimes, a function wants to indicate to the caller whether everything went well or not.
+// The idiomatic way to do so is to return two values: the return value and an error indicator.
+// The caller would check if any errors were flagged, or else use the return value.
+
+// Divide two numbers. If the denominator is zero, an error will be returned
+func Divide(x float32, y float32) (float32, error) {
+	if y == 0 {
+		return 0, errors.New("division by zero")
+	}
+	return x / y, nil
+}
+
+// DivisionRunner runs divisions given two numbers
+func DivisionRunner(x float32, y float32) {
+	result, err := Divide(x, y)
+
+	if err == nil {
+		fmt.Printf("%v / %v = %v", x, y, result)
+	} else {
+		fmt.Printf("error: %v", err)
+	}
+	println()
+}
+
+// Errors resources:
+// * https://gobyexample.com/errors
+// * https://about.sourcegraph.com/go/gophercon-2019-handling-go-errors
 
 //  _____           _    _
 // |_   _|___  ___ | |_ (_) _ __    __ _
@@ -399,22 +442,3 @@ func UseFmt() {
 //   | ||  __/\__ \| |_ | || | | || (_| |
 //   |_| \___||___/ \__||_||_| |_| \__, |
 //                                 |___/
-
-//  _____  _      _
-// |_   _|| |__  (_) _ __    __ _  ___    _   _   ___   _   _
-//   | |  | '_ \ | || '_ \  / _` |/ __|  | | | | / _ \ | | | |
-//   | |  | | | || || | | || (_| |\__ \  | |_| || (_) || |_| |
-//   |_|  |_| |_||_||_| |_| \__, ||___/   \__, | \___/  \__,_|
-//                          |___/         |___/
-//                        _  _       __  _             _    _
-// __      __ ___   _ __ ( )| |_    / _|(_) _ __    __| |  (_) _ __
-// \ \ /\ / // _ \ | '_ \|/ | __|  | |_ | || '_ \  / _` |  | || '_ \
-//  \ V  V /| (_) || | | |  | |_   |  _|| || | | || (_| |  | || | | |
-//   \_/\_/  \___/ |_| |_|   \__|  |_|  |_||_| |_| \__,_|  |_||_| |_|
-//
-//   ____
-//  / ___|  ___
-// | |  _  / _ \
-// | |_| || (_) |
-//  \____| \___/
-//

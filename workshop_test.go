@@ -25,3 +25,12 @@ func TestStringsAndFmt(b *testing.T) {
 	UseStrings("Spam")
 	//UseFmt()
 }
+
+func TestPointers(t *testing.T) {
+	UsePointers()
+}
+
+func TestDivisionRunner(t *testing.T) {
+	DivisionRunner(2, 3)
+	DivisionRunner(5, 0)
+}
