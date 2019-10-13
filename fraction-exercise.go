@@ -32,7 +32,7 @@ func CreateFraction(num int, denom int) (*Fraction, error) {
 }
 
 
-// AddFractions adds two fractions and return a pointer to the result which is a new Fraction
+// AddFractions adds two fraction pointers and return a pointer to the result which is a new Fraction
 // If the result denominator is zero, it returns an error with text "denominator must not be zero"
 // As a reminder, adding two fractions is calculated like this:
 // a/x + b/y = (ay + bx)/xy

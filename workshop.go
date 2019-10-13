@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"math"
 	"math/rand"
-	"os"
 	"strings"
 	"testing"
 	"time"
@@ -54,7 +53,7 @@ import (
 // Golang. So which one is correct? Well, the name of the language is Go. However, googling
 // for something called Go is quite difficult, so many sites about Go are called Golang,
 // that is, the domain name is golang.org, the twitter handle is #golang, the subreddit name
-// is /r/golang etc. So use what you want, and let's go with the workshop.
+// is /r/golang etc. So use what you want, and let's go on with the workshop.
 
 // Go resources:
 // * https://golang.org/
@@ -63,31 +62,6 @@ import (
 // * https://tour.golang.org/
 // * https://twitter.com/search?q=%23golang
 // * https://www.reddit.com/r/golang/
-
-//  ____
-// |  _ \   ___ __   __    ___  _ __ __   __
-// | | | | / _ \\ \ / /   / _ \| '_ \\ \ / /
-// | |_| ||  __/ \ V /   |  __/| | | |\ V /
-// |____/  \___|  \_/     \___||_| |_| \_/
-
-// If you haven't already, install Go using the instructions found in https://golang.org/doc/install
-//
-// Your Go environment should look like this:
-// Go
-// |- bin
-// |- pkg
-// |- src
-//    |- github.com
-//       |- goworkshop
-//
-// You should also have two environment variables:
-// GOROOT - pointing to wherever you installed Go
-// GOPATH - pointing to where your Go code is, that is, the root folder of the structure above
-
-// Go dev env resources:
-// * https://golang.org/doc/install
-// * https://medium.com/rungo/working-in-go-workspace-3b0576e0534a
-// * https://www.callicoder.com/golang-installation-setup-gopath-workspace/
 
 //  _____                            _    _
 // | ____|__  __ _ __    ___   _ __ | |_ (_) _ __    __ _
@@ -103,7 +77,7 @@ import (
 // strings.ToLower("HELLO")
 // means I'm using the exported function ToLower() from package strings.
 // And the secret to exporting stuff from your package is this:
-// .........they need to start with a capital letter.
+// .........it need to start with a capital letter.
 // That's it! So in these cases:
 
 func mySecretLittleFunction() {}
@@ -189,6 +163,7 @@ func CreateVariables() {
 // Functions have the following syntax:
 // func functionName(arg1Name arg1Type, arg2Name arg2Type, ...etc) returnType {
 // 	   implementation
+//     return something
 // }
 //
 // Functions can look like this:
@@ -256,6 +231,9 @@ func LoopRunes() {
 	println()
 }
 
+// Exercise time!
+// Try to implement the functions in the loops-exercise.go file.
+
 // For loops resources:
 // * https://tour.golang.org/flowcontrol/1
 // * https://golangbot.com/loops/
@@ -306,6 +284,9 @@ func Maps() {
 // Collections resources:
 // * http://www.golangbootcamp.com/book/collection_types
 // * https://www.golang-book.com/books/intro/6
+
+// Exercise time!
+// Try to implement the functions in the collection-exercise.go file.
 
 //  ____   _                       _
 // / ___| | |_  _ __  _   _   ___ | |_  ___
@@ -368,8 +349,8 @@ func UseFmt() {
 	println()
 
 	waitForIt := "...wait for it..."
-	fmt.Fprintf(os.Stdout, "It's going to be legen %v dary", waitForIt)
-	println()
+	legendary := fmt.Sprintf("It's going to be legen %v dary", waitForIt)
+	println(legendary)
 }
 
 // strings and fmt resources:
@@ -404,6 +385,9 @@ func UsePointers() {
 // Pointer resources:
 // * https://tour.golang.org/moretypes/1
 // * https://medium.com/rungo/pointers-in-go-a789eafccd53
+
+// Exercise time!
+// Try to implement the functions in the pointers-exercise.go file.
 
 //  _____
 // | ____| _ __  _ __  ___   _ __  ___
@@ -485,10 +469,16 @@ func BenchmarkGetANumber(b *testing.B) {
 //
 // Creating tests, you must follow these instructions:
 // * Tests must be inside a file that ends with _test
-// * Test functions must begin with func TestXxx(t *testing.T) - the first letter after Test must be capital
+// * Test functions must begin with func TestXxx(t *testing.T) - the first letter after Test must be a
+//   capital letter
 // * Benchmark functions must begin with func BenchmarkXxx(b *testing.B) - again, the first letter
-//   after Benchmark must be capital
+//   after Benchmark must be a capital letter
 //
 // Testing resources:
 // * https://golang.org/pkg/testing/
 // * https://marcofranssen.nl/test-and-benchmark-your-code-in-go/
+
+// Exercise time!
+// Try to implement the functions in the fraction-exercises.go file.
+// The fraction exercise is a bit more complex than the previous exercises, and contains many of the
+// stuff we went through.

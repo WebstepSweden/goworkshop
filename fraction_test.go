@@ -75,7 +75,7 @@ func TestAddTwoFractions(t *testing.T) {
 	}
 }
 
-func TestAddMultipleFractions(t *testing.T) {
+func TestPrintFractions(t *testing.T) {
 	for _, testCase := range printFractionsTestCases {
 		want := testCase.expected
 		got := PrintFractions(testCase.fractions)
