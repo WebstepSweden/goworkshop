@@ -1,5 +1,5 @@
 package goworkshop
-
+/*
 import "testing"
 
 func TestPointerToCoordinate(t *testing.T) {
@@ -20,3 +20,4 @@ func TestChangeCoordinate(t *testing.T) {
 		t.Fatalf(`Fail! Wanted '%v', got '%v'`, want, got)
 	}
 }
+*/

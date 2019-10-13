@@ -1,5 +1,5 @@
 package goworkshop
-
+/*
 import (
 	"errors"
 	"testing"
@@ -85,3 +85,4 @@ func TestPrintFractions(t *testing.T) {
 		}
 	}
 }
+*/

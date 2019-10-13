@@ -1,5 +1,5 @@
 package goworkshop
-
+/*
 import (
 	"math/rand"
 	"testing"
@@ -32,3 +32,4 @@ func TestMaps(t *testing.T) {
 		}
 	}
 }
+*/
