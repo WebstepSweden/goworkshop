@@ -24,7 +24,7 @@
 1. Add the bin folder inside the downloaded sdk to your PATH environemt variable
 ![Add bin to PATH](add_go_to_path.jpg)
 
-1. Go to *File* > *Settings* > *Go* > *GOPATH* and add the *C:\go* folder to the *Global GOPATH*
+1. Back in GoLand, go to *File* > *Settings* > *Go* > *GOPATH* and add the *C:\go* folder to the *Global GOPATH*
 ![Add to GOPATH](add_gopath.jpg)
 
 1. Open the *try_me_first_test.go* file and run the test by clicking the green arrow beside *func TestIfThisWorks...*. If everything works fine, you should see a confirmation in the run window
