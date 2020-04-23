@@ -9,7 +9,7 @@
 1. Create folders *C:\go* and *C:\go\src*
 ![Create folders](create_folders.jpg)
 
-1. Clone the workshop repo from [https://github.com/WebstepSweden/goworkshop.git](https://www.jetbrains.com/go/) into the *C:\go\src* folder
+1. Clone the workshop repo from [https://github.com/WebstepSweden/goworkshop.git](https://github.com/WebstepSweden/goworkshop.git) into the *C:\go\src* folder
 ![Clone workshop](clone_workshop.jpg)
 
 1. Open the *C:\go* folder with GoLand
