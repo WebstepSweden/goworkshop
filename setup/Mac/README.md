@@ -9,7 +9,7 @@
 1. Create folders *~/go* and *~/go/src*
 ![Create folders](create_folders.png)
 
-1. Clone the workshop repo from [https://github.com/WebstepSweden/goworkshop.git](https://www.jetbrains.com/go/) into the *~/go/src* folder
+1. Clone the workshop repo from [https://github.com/WebstepSweden/goworkshop.git](https://github.com/WebstepSweden/goworkshop.git) into the *~/go/src* folder
 ![Clone workshop](clone_workshop.png)
 
 1. Open the *~/go* folder with GoLand
